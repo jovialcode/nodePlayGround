@@ -1,12 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose, {Connection} from 'mongoose';
 import { Db } from 'mongodb';
 import config from '../config';
 
-export default async (): Promise<Db> => {
+export default async (): Promise<Connection> => {
     const connection = await mongoose.connect(config.databaseURL, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
     });
-    return connection.connection.db;
+    return connection.connection;
 };
