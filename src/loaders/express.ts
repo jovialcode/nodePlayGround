@@ -1,15 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import cors from 'cors';
 import routes from '../api';
-import {env} from '../config';
+import config from '../config';
 
 
 export default ({ app }: { app: express.Application }) => {
-    /**
-     * Health Check endpoints
-     * @TODO Explain why they are here
-     */
     app.get('/status', (req, res) => {
         res.status(200).end();
     });
